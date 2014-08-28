@@ -62,9 +62,7 @@ module NewRelicAWS
         return @agent_options if @agent_options
         @agent_options = NewRelic::Plugin::Config.config.options
         aws = @agent_options["aws"]
-        unless aws.is_a?(Hash) &&
-            aws["access_key"].is_a?(String) &&
-            aws["secret_key"].is_a?(String)
+        unless aws.is_a?(Hash)
           raise NewRelic::Plugin::BadConfig, "Missing or invalid AWS configuration."
         end
         @agent_options
